@@ -5,6 +5,9 @@ from rest_framework.response import Response
 from .models import Todo
 from todo_list_backend.serializers import TodoSerializer
 
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
+
 # Create your views here.
 
 
@@ -20,8 +23,8 @@ class LoginView(ObtainAuthToken):
 
 
 class TodoView(APIView):
-    # authentication_classes = [authentication.TokenAuthentication]
-    permission_classes = []
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
         todos = Todo.objects.all()
