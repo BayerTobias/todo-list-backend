@@ -23,4 +23,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("login/", LoginView.as_view()),
     path("todos/", TodoView.as_view()),
+    path("todos/<int:pk>/", TodoView.as_view()),
 ]
